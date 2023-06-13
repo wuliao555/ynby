@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>云南白药口腔调查问卷</title>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="css/main.css">
+		<style>
+			form{
+				width: 86%;
+				margin: 0 auto;
+			}
+			input[type="radio"]{
+				vertical-align: middle;
+				width: 18px;
+				height: 18px;
+			}
+			input[type="radio"] + label{
+				margin-right: 18px;
+			}
+			@keyframes jydh{
+				from{
+					height: 0px;
+					opacity: 0;
+					top: 120px;
+				}
+				to{
+					height: 100%;
+					opacity: 1;
+					border: 1px white solid;
+					border-radius: 12px;
+					box-shadow: 0px 5px 26px 0px rgba(204, 204, 204, 0.5), 4px 0px 20px 0px rgba(204, 204, 204, 0.5);
+					top: 0px;
+				}
+			}
+			#result{
+				position: relative;
+				margin-bottom: 18px;
+				padding: 18px;
+				text-align: center;
+				padding-left: 22px;
+				transition: all 3s;
+			}
+			ol + p{
+				text-indent: 2em;
+			}
+		</style>
+	</head>
+	<body>
+		<form onsubmit="return check_form()">
+			<h2>健康牙齿，从口腔开始！</h2>
+			<p>请回答以下问题，并获取您的健康建议：</p><br>
+			<label for="q1">1.您认为口腔健康对您来说重要吗？</label><br>
+			<input type="radio" id="q1a1" name="q1" value="1">
+			<label for="q1a1">重要</label>
+			<input type="radio" id="q1a2" name="q1" value="2">
+			<label for="q1a2">不重要</label>
+			<input type="radio" id="q1a3" name="q1" value="3">
+			<label for="q1a3">不知道</label>
+			<br><br>
+			<label for="q2">2.您每天刷几次牙？</label><br>
+			<input type="radio" id="q2a1" name="q2" value="1">
+			<label for="q2a1">1次</label>
+			<input type="radio" id="q2a2" name="q2" value="2">
+			<label for="q2a2">2次及以上</label>
+			<input type="radio" id="q2a3" name="q2" value="3">
+			<label for="q2a3">不一定</label>
+			<br><br>
+			<label for="q3">3.您每次刷牙的时间是多久？</label><br>
+			<input type="radio" id="q3a1" name="q3" value="1">
+			<label for="q3a1">小于一分钟</label>
+			<input type="radio" id="q3a2" name="q3" value="2">
+			<label for="q3a2">小于两分钟</label>
+			<input type="radio" id="q3a3" name="q3" value="3">
+			<label for="q3a3">大于三分钟</label>
+			<br><br>
+			<label for="q4">4.您多久换一次牙刷？</label><br>
+			<input type="radio" id="q4a1" name="q4" value="1">
+			<label for="q4a1">一个月</label>
+			<input type="radio" id="q4a2" name="q4" value="2">
+			<label for="q4a2">三个月 </label>
+			<input type="radio" id="q4a3" name="q4" value="3">
+			<label for="q4a3">半年及以上</label>
+			<br><br>
+			<label for="q5">5.您每次的刷牙时间？</label><br>
+			<input type="radio" id="q5a1" name="q5" value="1">
+			<label for="q5a1">早上 </label>
+			<input type="radio" id="q5a2" name="q5" value="2">
+			<label for="q5a2">晚上 </label>
+			<input type="radio" id="q5a3" name="q5" value="3">
+			<label for="q5a3">早晚都刷</label>
+			<br><br>
+			<label for="q6">6.您每次刷牙前是否沾水？</label><br>
+			<input type="radio" id="q6a1" name="q6" value="1">
+			<label for="q6a1">是</label>
+			<input type="radio" id="q6a2" name="q6" value="2">
+			<label for="q6a2">否</label>
+			<br><br>
+			<label for="q7">7.您是否使用巴氏刷牙法？</label><br>
+			<input type="radio" id="q7a1" name="q7" value="1">
+			<label for="q7a1">是</label>
+			<input type="radio" id="q7a2" name="q7" value="2">
+			<label for="q7a2">否</label>
+			<br><br>				
+			<label for="q8">8.您是否在饭后使用漱口水？</label><br>
+			<input type="radio" id="q8a1" name="q8" value="1">
+			<label for="q8a1">是</label>
+			<input type="radio" id="q8a2" name="q8" value="2">
+			<label for="q8a2">否</label>
+			<br><br>
+			<label for="q9">9.您目前使用的牙刷是软毛还是硬毛？</label><br>
+			<input type="radio" id="q9a1" name="q9" value="1">
+			<label for="q9a1">软毛</label>
+			<input type="radio" id="q9a2" name="q9" value="2">
+			<label for="q9a2">硬毛</label>
+			<br><br>
+			<div id="result"><input type="submit" class="bt" value=">点击获取健康建议<"></div>
+		</form>
+		<script>
+			function check_form(){
+				let q_a = [0];
+				for (let i = 1;i <= 9;i++) {
+					let qa = document.getElementsByName("q" + i);
+					for(let a of qa){
+						if(a.checked){
+							q_a[i] = a.value;
+							break;
+						}
+						if(a === qa[qa.length - 1]){
+							alert("请填完后再继续提交！");
+							return false;
+						}
+					}
+				}
+				let advice = "";
+				if(q_a[1] !== "1"){
+					advice += "<li>口腔健康与全身健康密切相关。口腔中的感染和炎症因子可导致或加剧心脑血管病、糖尿病等慢性病，危害全身健康，影响生命质量。龋病和牙周病会破坏牙齿硬组织和牙齿周围支持组织，不仅影响咀嚼、言语、美观等功能外，还会造成社会交往困难和心理障碍。</li>";
+				}
+				if(q_a[2] !== "2"){
+					advice += "<li>建议每天刷牙次数在两次左右，这样能有效清除残留在牙齿缝隙当中的食物残渣，防止细菌或其他有害微生物在口腔内部滋生。</li>";
+				}
+				if(q_a[3] !== "3"){
+					advice += "<li>建议刷牙时间要3分钟以上,这样才能起到有效的清洁口腔及牙齿的作用</li>";
+				}
+				if(q_a[4] !== "1"){
+					advice += "<li>牙刷建议一个月换一次比较好，最长不要超过三个月。牙刷即使经过反复的清水冲洗，也仍然有少量的食物残渣会残留在牙刷的表面，容易滋生细菌，再次使用可能会把细菌带到口腔中。而且牙刷使用时间过长，它的刷毛会受到一定的损伤和脱落，刷牙效率、清洁度以及刷牙角度等方面就会降低，可能造成牙齿没刷干净，导致牙病的发生。</li>";
+				}
+				if(q_a[5] !== "3"){
+					advice += "<li>建议每天早晚都刷牙，早上刷一次牙可以有清新的口气，也能及时清理口腔内的一些污垢，帮助维护口腔健康，晚上刷一次牙可以很好的清理自己口腔内一天的食物残渣，帮助自己口腔健康。</li>";
+				}
+				if(q_a[6] !== "2"){
+					advice += "<li>建议刷牙前不要漱口牙刷不要沾水，因为牙膏是利用摩擦力达到清洁牙齿的目的，所以刷牙前不漱口牙刷不沾水才会刷的更干净。</li>";
+				}
+				if(q_a[7] !== "1"){
+					advice += "<li>建议使用巴氏刷牙法，即水平短距离颤动刷牙法。原理是让牙刷毛伸入牙龈沟与牙齿相邻面，对准牙菌斑最易附着的区域，短距离水平颤动，可起到清洁口腔、清除牙菌斑的作用。巴斯刷牙法的顺序通常如下：<ul><li>(1).牙齿外侧面：可将牙刷与牙齿之间呈45°，放在牙龈和牙齿之间纵向擦洗。不要遗漏任何牙齿，在刷牙的时候要注意力度轻柔。过于用力可能会引起牙龈出血；</li><li>(2).牙齿咬合面：将牙刷和牙齿咬合面呈90°，横向擦洗；</li><li>(3).牙齿内侧面：将牙刷竖起来纵向轻刷上下牙齿；</li><li>(4).舌头表面：刷完牙后注意要刷舌头，舌头上覆盖的牙菌斑较多。经常刷舌头可以有效清除食物残渣，从而减少细菌、牙菌斑的形成，预防口臭。</li></ul></li>";
+				}
+				if(q_a[8] !== "1"){
+					advice += "<li>建议饭后使用漱口水清洁口腔，可以去除食物残渣、减少口腔细菌获得清新口气。</li>";
+				}
+				if(q_a[9] !== "1"){
+					advice += "<li>建议使用软毛牙刷，可以更轻易地清洁到口腔中难以清洁的区域，软毛牙刷可以改善牙龈出血的问题，不会损伤牙龈和牙釉质，不刺激口腔黏膜。</li>";
+				}
+				let resultDiv = document.getElementById('result');
+				resultDiv.innerHTML = "<p>根据您的回答，我们的建议是：</p><ol>" + advice + "</ol><p>虽然您已经掌握了维持口腔健康的方法，但是麻辣热烫的饮食、冰爽清凉的饮品、无法抵挡的灵魂宵夜、熬夜晚起的作息，当代年轻族群的花式习惯，你踩中了几个？口气异味、口燥不适、口腔溃疡、牙龈出血、牙龈肿痛等口腔问题接踵而至，总是让人痛苦不堪。因此为您推荐云南白药“口腔治愈礼盒”，打造“专业口腔护理王炸BOX”，让日常繁琐的口腔护理变成生活中的小确幸，轻松俘获热衷美食的“你”。</p><button class='bt' onclick='gogiftbox()'>>查看礼盒详细介绍<</button>";
+				resultDiv.style.animation = "jydh 4s 1 forwards";
+				return false;
+			}
+			function gogiftbox(){
+				sessionStorage.clear();
+				window.location.assign("html/giftbox.html");
+			}
+		</script>
+	</body>
+</html>
