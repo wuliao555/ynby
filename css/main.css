@@ -1,0 +1,38 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-image: url("../img/背景.gif");
+	color: white;
+	font-size: 18px;
+}
+h2{
+	text-align: center;
+	margin: 36px 0;
+}
+li{
+	margin: 18px 0px;
+	text-align: left;
+}
+p{
+	text-align: left;
+}
+@keyframes btdh{
+	from{transform: scale(1.05);}
+	to{transform: scale(0.95);}
+}
+.bt{
+	font-size: 22px;
+	width: 242px;
+	height: 66px;
+	margin: 22px 0px;
+	animation: btdh 1s alternate infinite;
+	cursor: pointer;
+	background-color: rgba(0, 170, 255, 0.5);
+	background-image: linear-gradient(to bottom right, #0086d1, #005ca2, #0078c5);
+	color: white;
+	border-color: #ddd;
+	border-radius: 15px;
+	box-shadow: 0px 5px 26px 0px rgba(0, 0, 255, 0.5), 4px 0px 20px 0px rgba(0, 0, 255, 0.5);
+}
